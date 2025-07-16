@@ -1,0 +1,20 @@
+# Add runtime.txt for Python version control
+import os
+import subprocess
+
+def add_runtime_file():
+    # Create runtime.txt with the desired Python version
+    python_version = "python-3.11"
+    with open("runtime.txt", "w") as runtime_file:
+        runtime_file.write(python_version + "\n")
+
+def git_add_commit_push():
+    # Add runtime.txt to git, commit, and push to main branch
+    subprocess.run(["git", "add", "runtime.txt"], check=True)
+    subprocess.run(["git", "commit", "-m", "Add runtime.txt for Python version control"], check=True)
+    subprocess.run(["git", "push", "origin", "main"], check=True)
+
+if __name__ == "__main__":
+    # Create runtime.txt and push to git
+    add_runtime_file()
+    git_add_commit_push()
